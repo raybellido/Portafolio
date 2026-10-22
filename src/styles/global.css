@@ -1,0 +1,222 @@
+/* ============================================================================
+   global.css — Tokens de diseño, reset y estilos base
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* --- Superficies --- */
+  --color-bg: #09090b;
+  --color-surface: #18181b;
+  --color-surface-2: #111113;
+  --color-border: #27272a;
+  --color-border-strong: #3f3f46;
+
+  /* --- Texto --- */
+  --color-text: #f4f4f5;
+  --color-muted: #a1a1aa;
+  --color-subtle: #71717a;
+
+  /* --- Acento --- */
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+  --color-accent-soft: #a78bfa;
+  --color-accent-contrast: #ffffff;
+  --color-accent-glow: rgb(139 92 246 / 15%);
+  --color-accent-line: rgb(139 92 246 / 40%);
+
+  /* --- Semánticos --- */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+
+  /* --- Tipografía --- */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  /* --- Layout --- */
+  --container-max: 1440px;
+  --gutter: clamp(24px, 9vw, 130px);
+  --section-gap: clamp(72px, 8vw, 112px);
+  --navbar-height: 72px;
+
+  /* --- Formas --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* --- Sombras --- */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
+  --shadow-md: 0 18px 40px -22px rgb(0 0 0 / 75%);
+  --shadow-lg: 0 30px 80px -30px rgb(0 0 0 / 85%);
+  --shadow-accent: 0 12px 32px -14px rgb(139 92 246 / 70%);
+
+  /* --- Movimiento --- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 200ms var(--ease);
+
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Compensa el navbar fijo al saltar a un ancla */
+  scroll-padding-top: calc(var(--navbar-height) + 16px);
+  -webkit-text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ============================================================================
+   Accesibilidad
+   ========================================================================== */
+
+/* Foco visible solo cuando se navega con teclado */
+:focus-visible {
+  outline: 2px solid var(--color-accent-soft);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enlace de salto al contenido */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: top var(--transition);
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+}
+
+/* ============================================================================
+   Scrollbar
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border: 2px solid var(--color-bg);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* ============================================================================
+   Preferencias de movimiento reducido
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
