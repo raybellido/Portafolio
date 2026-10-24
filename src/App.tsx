@@ -1,22 +1,30 @@
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowDown, ArrowUpRight, FileText, X } from 'lucide-react'
+import heroImage from './assets/hero.png'
 import { GithubIcon, LinkedinIcon } from './components/BrandIcons'
 import ProjectsSection from './components/sections/projects/ProjectsSection'
 import SkillsSection from './components/sections/skills/SkillsSection'
+import ExperienceSection from './components/sections/experience/ExperienceSection'
+import CertificationSection from './components/sections/certifications/CertificationSection'
 import { useActiveSection } from './hooks/useActiveSection'
+import cvImage from './assets/cv.png'
 import './App.css'
 
-const NAV_SECTIONS = ['inicio', 'proyectos', 'stack', 'sobre-mi', 'contacto'] as const
+const NAV_SECTIONS = ['inicio', 'proyectos', 'experiencia', 'stack', 'certificaciones', 'sobre-mi', 'contacto'] as const
 
 const NAV_LINKS = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'proyectos', label: 'Proyectos' },
+  { id: 'experiencia', label: 'Experiencia' },
   { id: 'stack', label: 'Stack' },
+  { id: 'certificaciones', label: 'Certificaciones' },
   { id: 'sobre-mi', label: 'Sobre mí' },
   { id: 'contacto', label: 'Contacto' },
 ]
 
 function App() {
   const activeSection = useActiveSection(NAV_SECTIONS)
+  const [cvModalOpen, setCvModalOpen] = useState(false)
 
   return (
     <div className="portfolio">
@@ -26,8 +34,8 @@ function App() {
 
       <header className="navbar">
         <a href="#inicio" className="logo">
-          <span className="logo-mark">&lt;/&gt;</span>
-          <span>DevPortfolio</span>
+          <span className="logo-mark">RB</span>
+          <span>Ray Bellido</span>
         </a>
 
         <nav className="nav-links">
@@ -45,7 +53,7 @@ function App() {
 
         <a
           className="nav-github"
-          href="https://github.com/"
+          href="https://github.com/raybellido"
           target="_blank"
           rel="noreferrer"
           aria-label="GitHub"
@@ -62,18 +70,17 @@ function App() {
               Construyendo proyectos y aprendiendo
             </span>
 
-            <p className="eyebrow">HOLA, SOY DESARROLLADOR</p>
+            <p className="eyebrow">BIENVENIDO A MI PORTAFOLIO</p>
 
             <h1>
-              Construyo soluciones
+              Soy Ray Bellido
               <br />
-              con <span>código y propósito.</span>
+              <span>Desarrollador Web FullStack</span>
             </h1>
 
             <p className="hero-description">
-              Desarrollador enfocado en Backend Java y Spring Boot.
-              Me interesa diseñar APIs, construir buenas reglas de negocio
-              y crear software mantenible.
+              Construyo APIs con Java y Spring Boot y las conecto
+              a interfaces con Angular y React.
             </p>
 
             <div className="hero-actions">
@@ -82,19 +89,19 @@ function App() {
                 <ArrowUpRight size={18} />
               </a>
 
-              <a href="#sobre-mi" className="button-secondary">
-                Conocer más
+              <a href="#" className="button-secondary" onClick={(e) => { e.preventDefault(); setCvModalOpen(true) }}>
+                Resumen <FileText size={18} />
               </a>
             </div>
 
             <div className="social-links">
-              <a href="https://github.com/" target="_blank" rel="noreferrer">
+              <a href="https://github.com/raybellido" target="_blank" rel="noreferrer">
                 <GithubIcon size={18} />
                 GitHub
               </a>
 
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/ray-bellido/"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -104,23 +111,14 @@ function App() {
             </div>
           </div>
 
-          <div className="hero-decoration" aria-hidden="true">
-            <div className="code-card">
-              <div className="code-card-header">
-                <span />
-                <span />
-                <span />
-                <p>developer.java</p>
-              </div>
-
-              <div className="code-content">
-                <p><span className="code-purple">public class</span> Developer {'{'}</p>
-                <p className="indent"><span className="code-purple">String</span> role = <span className="code-green">"Backend"</span>;</p>
-                <p className="indent"><span className="code-purple">String</span> language = <span className="code-green">"Java"</span>;</p>
-                <p className="indent"><span className="code-purple">boolean</span> learning = <span className="code-orange">true</span>;</p>
-                <p>{'}'}</p>
-              </div>
-            </div>
+          <div className="hero-photo">
+            <img
+              src={heroImage}
+              alt="Foto de perfil de Ray Bellido"
+              className="profile-image"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           <a className="scroll-indicator" href="#proyectos">
@@ -131,7 +129,11 @@ function App() {
 
         <ProjectsSection />
 
+        <ExperienceSection />
+
         <SkillsSection />
+
+        <CertificationSection />
 
         <section className="about-section" id="sobre-mi">
           <div className="section-heading">
@@ -155,16 +157,38 @@ function App() {
             </p>
           </div>
 
-          <a href="https://github.com/" className="button-primary">
+          <a href="https://github.com/raybellido" className="button-primary">
             Visitar GitHub
             <ArrowUpRight size={18} />
           </a>
         </section>
+
+        {cvModalOpen && (
+          <div className="modal-overlay" onClick={() => setCvModalOpen(false)}>
+            <div className="modal modal-cv" onClick={(event) => event.stopPropagation()}>
+              <button
+                type="button"
+                className="modal-close"
+                onClick={() => setCvModalOpen(false)}
+                aria-label="Cerrar CV"
+              >
+                <X size={20} />
+              </button>
+              <img
+                src={cvImage}
+                alt="Currículum Vitae de Ray Bellido"
+                className="cv-image"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        )}
       </main>
 
       <footer className="footer">
         <p>Diseñado y construido con React + TypeScript.</p>
-        <p>© {new Date().getFullYear()} · Todos los derechos reservados.</p>
+        <p>© {new Date().getFullYear()} Ray Bellido · Todos los derechos reservados.</p>
       </footer>
     </div>
   )

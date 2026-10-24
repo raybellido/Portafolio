@@ -1,3 +1,4 @@
+import { Clapperboard, MessagesSquare, PackageSearch, TicketCheck } from 'lucide-react'
 import type { Project } from '../types/project'
 
 import showflixImage from '../assets/projects/showflix.png'
@@ -10,37 +11,40 @@ export const projects: Project[] = [
     id: 1,
     title: 'Showflix',
     description:
-      'Plataforma de películas con backend en Java y Spring Boot, y una interfaz frontend que consume datos de prueba.',
-    technologies: ['Java', 'Spring Boot', 'Angular'],
+      'En Showflix apliqué Spring Security con JWT para proteger una API REST y la consumí desde Angular. Aprendí a paginar resultados, buscar por título y gestionar favoritos por usuario.',
+    technologies: ['Java', 'Spring Boot', 'Angular', 'MySQL', 'JWT', 'Spring Security', 'Maven'],
     status: 'Completado',
+    icon: Clapperboard,
     image: showflixImage,
     videoId: 'https://www.youtube.com/watch?v=iXrroFRY608',
     demoUrl: 'https://showflix-3n9.pages.dev/',
-    githubUrl: 'https://github.com/',
+    githubUrl: 'https://github.com/raybellido',
   },
   {
     id: 2,
     title: 'ForoHub',
     description:
-      'Aplicación de foro para gestionar tópicos y conversaciones, desarrollada como proyecto de aprendizaje.',
-    technologies: ['Java', 'Spring Boot', 'API REST'],
+      'ForoHub me enseñó a modelar un dominio completo con entidades y DTOs. Practiqué la validación de datos y devolver respuestas estandarizadas en una API REST con Spring Boot.',
+    technologies: ['Java', 'Spring Boot', 'Angular', 'MySQL', 'JPA', 'Hibernate', 'REST APIs'],
     status: 'Completado',
+    icon: MessagesSquare,
     image: forohubImage,
     videoId: 'https://www.youtube.com/watch?v=CzGv5nDLv2A',
     demoUrl: 'https://c516d3ac.forohub.pages.dev/login',
-    githubUrl: 'https://github.com/',
+    githubUrl: 'https://github.com/raybellido/API-FOROHUB',
   },
   {
     id: 3,
     title: 'Helpdesk',
     description:
-      'Sistema de tickets con reglas de negocio, gestión de estados y separación de responsabilidades mediante arquitectura hexagonal.',
-    technologies: ['Java', 'Spring Boot', 'React', 'TypeScript'],
+      'Con Helpdesk aprendí arquitectura hexagonal, separando el dominio de la infraestructura. Implementé autenticación OAuth2 con JWT y construí el frontend de tickets en React.',
+    technologies: ['Java', 'Spring Boot', 'React', 'TypeScript', 'MySQL', 'OAuth2', 'REST APIs'],
     status: 'Completado',
+    icon: TicketCheck,
     image: helpdeskImage,
     videoId: '',
     demoUrl: '',
-    githubUrl: 'https://github.com/',
+    githubUrl: 'https://github.com/raybellido',
   },
   {
     id: 4,
@@ -49,6 +53,7 @@ export const projects: Project[] = [
       'Plataforma de gestión de pedidos en desarrollo, diseñada con DDD y arquitectura hexagonal, con planes para incorporar inventario y eventos asíncronos.',
     technologies: ['Java 21', 'Spring Boot', 'DDD', 'Maven'],
     status: 'En desarrollo',
+    icon: PackageSearch,
     image: orderflowImage,
     videoId: '',
     demoUrl: '',

@@ -1,11 +1,4 @@
 import { skillGroups } from '../../../data/skills'
-import type { SkillLevel } from '../../../types/skill'
-
-const levelClass: Record<SkillLevel, string> = {
-  Avanzado: 'level-advanced',
-  Intermedio: 'level-intermediate',
-  Aprendiendo: 'level-learning',
-}
 
 function SkillsSection() {
   return (
@@ -25,9 +18,6 @@ function SkillsSection() {
         {skillGroups.map((group) => (
           <article className="skill-group" key={group.id}>
             <div className="skill-group-header">
-              <span className="skill-group-icon">
-                <group.icon size={20} />
-              </span>
               <h3>{group.title}</h3>
             </div>
 
@@ -35,12 +25,15 @@ function SkillsSection() {
 
             <ul className="skill-list">
               {group.skills.map((skill) => (
-                <li className="skill-item" key={skill.name}>
-                  <skill.icon size={16} />
+                <li className="skill-item" key={skill.name} title={skill.name}>
+                  <img
+                    className="skill-logo"
+                    src={skill.icon}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                  />
                   <span className="skill-name">{skill.name}</span>
-                  <span className={`skill-level ${levelClass[skill.level]}`}>
-                    {skill.level}
-                  </span>
                 </li>
               ))}
             </ul>

@@ -14,6 +14,7 @@ function ProjectCard({ project }: ProjectCardProps) {
 
   const isInDevelopment = project.status === 'En desarrollo'
   const videoId = getYouTubeId(project.videoId)
+  const Icon = project.icon
 
   const openModal = useCallback(() => setIsModalOpen(true), [])
   const closeModal = useCallback(() => setIsModalOpen(false), [])
@@ -48,7 +49,7 @@ function ProjectCard({ project }: ProjectCardProps) {
       <div className="project-card-body">
         <div className="project-card-top">
           <div className="project-icon">
-            <span>&lt;/&gt;</span>
+            <Icon size={20} />
           </div>
 
           <span
