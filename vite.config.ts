@@ -8,4 +8,14 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  server: {
+    watch: {
+      // En Windows, chokidar falla con "EBUSY: resource busy or locked"
+      // cuando un archivo está siendo escrito o lo tiene abierto otro
+      // programa (por ejemplo, un SVG exportado desde un editor gráfico).
+      // El sondeo por polling evita ese error.
+      usePolling: true,
+      interval: 300,
+    },
+  },
 })

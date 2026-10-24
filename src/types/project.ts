@@ -4,7 +4,11 @@ export interface Project {
   description: string
   technologies: string[]
   status: 'Completado' | 'En desarrollo'
-  category: 'Backend' | 'Full Stack'
-  githubUrl: string
+  /** Captura de pantalla del proyecto */
+  image: string
+  /** ID o URL del video de YouTube (opcional). Al hacer clic en la imagen se abre el modal. */
+  videoId?: string
+  /** Enlace a la demo publicada (opcional) */
   demoUrl?: string
+  githubUrl: string
 }
