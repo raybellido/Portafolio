@@ -19,6 +19,6 @@ export const experiences: Experience[] = [
       'Monitoreé servicios con herramientas de AWS y analicé integraciones con proveedores externos del sector financiero.',
       'Colaboré con el equipo en la identificación y el reporte de incidencias.',
     ],
-    technologies: ['GraphQL','TypeScript', 'Node.js', 'AWS', 'SQL', 'Postman', 'Bruno', 'Git'],
+    technologies: ['GraphQL', 'TypeScript', 'Node.js', 'AWS', 'SQL', 'Postman', 'Bruno', 'Git'],
   },
 ]

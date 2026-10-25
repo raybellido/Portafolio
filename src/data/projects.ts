@@ -18,7 +18,7 @@ export const projects: Project[] = [
     image: showflixImage,
     videoId: 'https://www.youtube.com/watch?v=iXrroFRY608',
     demoUrl: 'https://showflix-3n9.pages.dev/',
-    githubUrl: 'https://github.com/raybellido',
+    githubUrl: 'https://github.com/raybellido/showflix---backend',
   },
   {
     id: 2,
@@ -38,13 +38,13 @@ export const projects: Project[] = [
     title: 'Helpdesk',
     description:
       'Con Helpdesk aprendí arquitectura hexagonal, separando el dominio de la infraestructura. Implementé autenticación OAuth2 con JWT y construí el frontend de tickets en React.',
-    technologies: ['Java', 'Spring Boot', 'React', 'TypeScript', 'MySQL', 'OAuth2', 'REST APIs'],
+    technologies: ['Java', 'Spring Boot', 'React', 'TypeScript', 'MySQL', 'OAuth2', 'Docker'],
     status: 'Completado',
     icon: TicketCheck,
     image: helpdeskImage,
     videoId: '',
-    demoUrl: '',
-    githubUrl: 'https://github.com/raybellido',
+    demoUrl: 'https://raybellido.github.io/TICKET-FRONT/',
+    githubUrl: 'https://github.com/raybellido/TICKET-api',
   },
   {
     id: 4,
@@ -57,6 +57,6 @@ export const projects: Project[] = [
     image: orderflowImage,
     videoId: '',
     demoUrl: '',
-    githubUrl: 'https://github.com/',
+    githubUrl: 'https://github.com/raybellido/OrderFlow',
   },
 ]

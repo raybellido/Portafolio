@@ -25,6 +25,19 @@ const NAV_LINKS = [
 function App() {
   const activeSection = useActiveSection(NAV_SECTIONS)
   const [cvModalOpen, setCvModalOpen] = useState(false)
+  const [certModal, setCertModal] = useState<{ open: boolean; src: string | null; title: string }>({
+    open: false,
+    src: null,
+    title: '',
+  })
+
+  const openCertModal = (src: string, title: string) => {
+    setCertModal({ open: true, src, title })
+  }
+
+  const closeCertModal = () => {
+    setCertModal({ open: false, src: null, title: '' })
+  }
 
   return (
     <div className="portfolio">
@@ -62,7 +75,7 @@ function App() {
         </a>
       </header>
 
-      <main id="contenido">
+      <main id="contenido" tabIndex={-1}>
         <section className="hero" id="inicio">
           <div className="hero-content">
             <span className="availability">
@@ -89,7 +102,7 @@ function App() {
                 <ArrowUpRight size={18} />
               </a>
 
-              <a href="#" className="button-secondary" onClick={(e) => { e.preventDefault(); setCvModalOpen(true) }}>
+              <a href="#" className="button-secondary" onClick={(e) => { e.preventDefault(); setCvModalOpen(true) }} aria-label="Ver resumen (CV)" role="button" aria-expanded={cvModalOpen} aria-controls="cv-modal">
                 Resumen <FileText size={18} />
               </a>
             </div>
@@ -133,7 +146,7 @@ function App() {
 
         <SkillsSection />
 
-        <CertificationSection />
+        <CertificationSection onOpenCert={openCertModal} />
 
         <section className="about-section" id="sobre-mi">
           <div className="section-heading">
@@ -165,7 +178,7 @@ function App() {
 
         {cvModalOpen && (
           <div className="modal-overlay" onClick={() => setCvModalOpen(false)}>
-            <div className="modal modal-cv" onClick={(event) => event.stopPropagation()}>
+            <div className="modal modal-cv" id="cv-modal" role="dialog" aria-modal="true" aria-label="Currículum Vitae de Ray Bellido" onClick={(event) => event.stopPropagation()}>
               <button
                 type="button"
                 className="modal-close"
@@ -181,6 +194,29 @@ function App() {
                 loading="lazy"
                 decoding="async"
               />
+            </div>
+          </div>
+        )}
+
+        {certModal.open && certModal.src && (
+          <div className="modal-overlay" onClick={closeCertModal}>
+            <div className="modal modal-cv" role="dialog" aria-modal="true" aria-label={`Certificado ${certModal.title}`} onClick={(event) => event.stopPropagation()}>
+              <button
+                type="button"
+                className="modal-close"
+                onClick={closeCertModal}
+                aria-label="Cerrar certificado"
+              >
+                <X size={20} />
+              </button>
+              <img
+                src={certModal.src}
+                alt={`Certificado ${certModal.title}`}
+                className="cv-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <p className="modal-caption">{certModal.title}</p>
             </div>
           </div>
         )}

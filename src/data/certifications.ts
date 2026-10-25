@@ -12,11 +12,11 @@ export const certifications: Certification[] = [
   },
   {
     id: 'cert-oracle-alura',
-    title: 'Certificado de Finalización del Programa',
+    title: 'Certificado de Finalización del Programa ',
     issuer: 'Oracle Next Education + Alura LATAM',
     date: 'Febrero 2026',
     credentialId: '7 formaciones · 326 horas',
     url: '#',
-    technologies: ['Oracle', 'Alura', 'Formación'],
+    technologies: ['Oracle','Backend','Spring Boot'],
   },
 ]
