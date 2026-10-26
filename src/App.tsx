@@ -64,15 +64,7 @@ function App() {
           ))}
         </nav>
 
-        <a
-          className="nav-github"
-          href="https://github.com/raybellido"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="GitHub"
-        >
-          <GithubIcon size={20} />
-        </a>
+        
       </header>
 
       <main id="contenido" tabIndex={-1}>
@@ -92,8 +84,7 @@ function App() {
             </h1>
 
             <p className="hero-description">
-              Construyo APIs con Java y Spring Boot y las conecto
-              a interfaces con Angular y React.
+              Bienvenido a mi portafolio
             </p>
 
             <div className="hero-actions">

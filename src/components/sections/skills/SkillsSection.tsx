@@ -6,7 +6,7 @@ function SkillsSection() {
       <div className="section-heading">
         <p className="eyebrow">STACK &amp; HERRAMIENTAS</p>
 
-        <h2>Tecnologías que uso a diario</h2>
+        <h2>Tecnologías que uso</h2>
 
         <p className="section-description">
           Herramientas con las que diseño APIs, modelo el dominio
