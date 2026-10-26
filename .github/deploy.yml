@@ -33,8 +33,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # GitHub Pages necesita base con el nombre del repo
-          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_BASE_PATH: /Portafolio/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
